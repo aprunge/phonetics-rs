@@ -35,11 +35,13 @@ fn generate_speech(input: &str) {
 
 
 fn main() {
+    print!("Enter your phrase of choice: ");
+    std::io::stdout().flush().unwrap();
+
     let mut input = String::new();
 
     match std::io::stdin().read_line(&mut input) {
         Ok(_) => {
-            // Trim any leading or trailing whitespace
             input = input.trim().to_string();
         }
         Err(error) => println!("Error: {}", error),
@@ -50,4 +52,6 @@ fn main() {
     generate_speech(&input);
 
     std::thread::sleep(Duration::from_millis(2000));
+
+    print! ("\x1B[2J\x1B[1;1H");
 }
